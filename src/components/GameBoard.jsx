@@ -171,6 +171,36 @@ const GameBoard = () => {
     }, 100);
   }, [currentWord, letters, centerLetter, validateWord, clearValidation, triggerAnimation]);
 
+  // Shuffle letters (keep center letter in place, shuffle outer letters)
+  const handleShuffle = useCallback(() => {
+    const outerLetters = letters.filter(letter => letter !== centerLetter);
+    const shuffledOuter = [...outerLetters].sort(() => Math.random() - 0.5);
+    
+    // Reconstruct letters array with center letter in same position
+    const newLetters = [];
+    let outerIndex = 0;
+    
+    letters.forEach(letter => {
+      if (letter === centerLetter) {
+        newLetters.push(centerLetter);
+      } else {
+        newLetters.push(shuffledOuter[outerIndex]);
+        outerIndex++;
+      }
+    });
+    
+    setLetters(newLetters);
+    
+    // Add shuffle celebration
+    addCelebration({
+      type: 'milestone',
+      message: 'Letters shuffled!',
+      duration: 1500
+    });
+    
+    setMessage('Letters shuffled! Look for new patterns.');
+  }, [letters, centerLetter, addCelebration]);
+
   // Delete last letter
   const handleDelete = () => {
     setCurrentWord(prev => prev.slice(0, -1));
@@ -343,10 +373,13 @@ const GameBoard = () => {
       handleDelete();
     } else if (key === 'escape') {
       handleClear();
+    } else if (key === 's' && (e.ctrlKey || e.metaKey)) {
+      e.preventDefault();
+      handleShuffle();
     } else if (key.match(/[a-z]/) && letters.map(l => l.toLowerCase()).includes(key)) {
       handleLetterClick(key.toUpperCase());
     }
-  }, [letters, handleSubmit, handleDelete, handleClear, handleLetterClick]));
+  }, [letters, handleSubmit, handleDelete, handleClear, handleLetterClick, handleShuffle]));
 
   if (isLoading) {
     return (
@@ -416,6 +449,12 @@ const GameBoard = () => {
               className="submit-btn"
             >
               Submit
+            </button>
+          </div>
+          
+          <div className="shuffle-section">
+            <button onClick={handleShuffle} className="shuffle-btn">
+              🔀 Shuffle Letters
             </button>
           </div>
         </div>

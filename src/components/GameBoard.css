@@ -192,6 +192,39 @@
   background: #218838 !important;
 }
 
+.shuffle-section {
+  margin-top: 1rem;
+}
+
+.shuffle-btn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  min-width: 160px;
+}
+
+.shuffle-btn:hover {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+}
+
+.shuffle-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+}
+
 .game-controls {
   text-align: center;
   margin-top: 2rem;
@@ -312,6 +345,12 @@
   
   .word-actions button {
     width: 100%;
+  }
+  
+  .shuffle-btn {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+    min-width: 140px;
   }
   
   .message {
