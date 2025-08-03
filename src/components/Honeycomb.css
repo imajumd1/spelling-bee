@@ -1,0 +1,175 @@
+/* Honeycomb Styling */
+
+.honeycomb-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.honeycomb {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 260px;
+}
+
+.honeycomb-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.honeycomb-row.top {
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 32px;
+}
+
+.honeycomb-row.middle {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 8px;
+}
+
+.honeycomb-row.bottom {
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 32px;
+}
+
+.honeycomb-letter {
+  width: 85px;
+  height: 85px;
+  border: 3px solid #d1d5db;
+  background: linear-gradient(145deg, #ffffff, #f9fafb);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 800;
+  font-family: 'Arial', sans-serif;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  user-select: none;
+  position: relative;
+}
+
+.honeycomb-letter:hover {
+  background: linear-gradient(145deg, #f3f4f6, #e5e7eb);
+  border-color: #9ca3af;
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.honeycomb-letter:active,
+.honeycomb-letter.clicked {
+  transform: scale(0.95);
+  background: #e8e8e8;
+}
+
+.honeycomb-letter.center-letter {
+  background: linear-gradient(145deg, #fbbf24, #f59e0b);
+  border-color: #d97706;
+  color: #1f2937;
+  font-weight: 900;
+  box-shadow: 
+    0 4px 6px -1px rgba(245, 158, 11, 0.4),
+    0 2px 4px -1px rgba(245, 158, 11, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  z-index: 10;
+}
+
+.honeycomb-letter.center-letter:hover {
+  background: linear-gradient(145deg, #fcd34d, #f59e0b);
+  border-color: #b45309;
+  box-shadow: 
+    0 10px 15px -3px rgba(245, 158, 11, 0.4),
+    0 4px 6px -2px rgba(245, 158, 11, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.honeycomb-letter.center-letter:active,
+.honeycomb-letter.center-letter.clicked {
+  background: #e6c200;
+  transform: scale(0.95);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .honeycomb {
+    width: 260px;
+    height: 220px;
+  }
+  
+  .honeycomb-letter {
+    width: 70px;
+    height: 70px;
+    font-size: 30px;
+  }
+  
+  .honeycomb-row.top,
+  .honeycomb-row.bottom {
+    gap: 28px;
+  }
+  
+  .honeycomb-row.middle {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .honeycomb {
+    width: 220px;
+    height: 190px;
+  }
+  
+  .honeycomb-letter {
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+  }
+  
+  .honeycomb-row.top,
+  .honeycomb-row.bottom {
+    gap: 24px;
+  }
+  
+  .honeycomb-row.middle {
+    gap: 4px;
+  }
+  
+  .honeycomb-row.top {
+    top: 12px;
+  }
+  
+  .honeycomb-row.bottom {
+    bottom: 12px;
+  }
+}
+
+/* Animation for feedback */
+@keyframes letterPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.honeycomb-letter.clicked {
+  animation: letterPulse 0.2s ease;
+}

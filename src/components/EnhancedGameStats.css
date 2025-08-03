@@ -1,0 +1,361 @@
+/* Enhanced Game Stats Styling */
+
+.enhanced-game-stats {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  border: 1px solid #dee2e6;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stats-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.score-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.current-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.score-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #343a40;
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 0.9rem;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.25rem;
+}
+
+.progress-container {
+  flex: 1;
+}
+
+.progress-bar {
+  position: relative;
+  height: 28px;
+  background: #e9ecef;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+  height: 100%;
+  background: #28a745;
+  transition: width 0.5s ease, background-color 0.3s ease;
+  border-radius: 14px;
+  position: relative;
+  background-image: linear-gradient(45deg, 
+    rgba(255,255,255,0.2) 25%, 
+    transparent 25%, 
+    transparent 50%, 
+    rgba(255,255,255,0.2) 50%, 
+    rgba(255,255,255,0.2) 75%, 
+    transparent 75%, 
+    transparent);
+  background-size: 20px 20px;
+}
+
+.progress-fill.animate {
+  animation: progressPulse 0.5s ease;
+}
+
+.progress-marker {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.5);
+  transition: background-color 0.3s ease;
+}
+
+.progress-marker.reached {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.genius-marker {
+  position: absolute;
+  top: -30px;
+  width: 2px;
+  height: calc(100% + 30px);
+  background: #dc3545;
+  z-index: 2;
+}
+
+.genius-label {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: #dc3545;
+  font-weight: bold;
+  white-space: nowrap;
+  background: white;
+  padding: 2px 4px;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: #6c757d;
+  text-align: center;
+}
+
+.achievement-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.current-level {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.level-emoji {
+  font-size: 1.8rem;
+}
+
+.next-level-info {
+  text-align: right;
+}
+
+.points-to-next {
+  font-size: 0.9rem;
+  color: #dc3545;
+  font-weight: 500;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+  font-size: 2rem;
+  opacity: 0.8;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #343a40;
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.stat-value.time-remaining {
+  font-size: 1.2rem;
+  color: #007bff;
+}
+
+.found-count {
+  color: #28a745;
+}
+
+.total-count {
+  color: #6c757d;
+  font-size: 1.2rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0.25rem 0;
+}
+
+.stat-percentage {
+  font-size: 0.8rem;
+  color: #868e96;
+  font-style: italic;
+}
+
+.stats-toggle {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.toggle-detailed-stats {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-detailed-stats:hover {
+  background: #0056b3;
+}
+
+.detailed-stats {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #dee2e6;
+}
+
+.detailed-stats h4 {
+  margin: 0 0 1rem 0;
+  color: #495057;
+  font-size: 1.1rem;
+}
+
+.detailed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.detailed-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border-left: 3px solid #007bff;
+}
+
+.detail-label {
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.detail-value {
+  font-size: 0.95rem;
+  color: #343a40;
+  font-weight: bold;
+}
+
+.last-played {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.75rem;
+  border-radius: 6px;
+  border-left: 3px solid #28a745;
+}
+
+/* Animations */
+@keyframes progressPulse {
+  0% { transform: scaleX(0.95); }
+  50% { transform: scaleX(1.05); }
+  100% { transform: scaleX(1); }
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .stats-header {
+    align-items: stretch;
+  }
+  
+  .score-section {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .achievement-section {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .enhanced-game-stats {
+    padding: 1rem;
+  }
+  
+  .score-section {
+    align-items: center;
+  }
+  
+  .current-score {
+    min-width: auto;
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .stat-card {
+    padding: 0.75rem;
+  }
+  
+  .detailed-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .achievement-section {
+    padding: 0.75rem;
+  }
+}
