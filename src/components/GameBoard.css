@@ -411,6 +411,17 @@
   animation: letterAdded 0.2s ease;
 }
 
+@keyframes geniusGlow {
+  0%, 100% { 
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.5);
+    transform: scale(1.02);
+  }
+}
+
 /* Mobile layout */
 @media (max-width: 767px) {
   .game-board {
