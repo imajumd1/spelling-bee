@@ -228,7 +228,7 @@ const GameBoard = () => {
     }
     
     if (foundWords.includes(word)) {
-      setMessage('Already found!');
+      setMessage('Already guessed');
       return;
     }
     
