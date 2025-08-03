@@ -362,6 +362,42 @@ const GameBoard = () => {
     if (percentage >= 10) return 'Good Start';
     return 'Beginner';
   };
+
+  // Get achievement emoji
+  const getAchievementEmoji = (score, maxScore) => {
+    const percentage = maxScore > 0 ? Math.round((score / maxScore) * 100) : 0;
+    if (percentage >= 80) return '🏆';
+    if (percentage >= 70) return '🌟';
+    if (percentage >= 60) return '🎉';
+    if (percentage >= 50) return '👍';
+    if (percentage >= 40) return '💪';
+    if (percentage >= 30) return '😊';
+    if (percentage >= 20) return '⬆️';
+    if (percentage >= 10) return '🌱';
+    return '🐣';
+  };
+
+  // Get next level progress message
+  const getNextLevelProgress = (score, maxScore) => {
+    const percentage = maxScore > 0 ? Math.round((score / maxScore) * 100) : 0;
+    const nextThreshold = percentage >= 80 ? 100 : Math.ceil((percentage + 1) / 10) * 10;
+    const pointsNeeded = Math.ceil(maxScore * nextThreshold / 100) - score;
+    
+    if (percentage >= 80) {
+      return 'You achieved Genius! 🎊';
+    }
+    
+    const nextLevel = nextThreshold >= 80 ? 'Genius' : 
+                     nextThreshold >= 70 ? 'Amazing' :
+                     nextThreshold >= 60 ? 'Great' :
+                     nextThreshold >= 50 ? 'Nice' :
+                     nextThreshold >= 40 ? 'Solid' :
+                     nextThreshold >= 30 ? 'Good' :
+                     nextThreshold >= 20 ? 'Moving Up' :
+                     nextThreshold >= 10 ? 'Good Start' : 'Beginner';
+    
+    return `${pointsNeeded} points to ${nextLevel}`;
+  };
   
   // Optimized keyboard handling
   useKeyboardOptimization(useCallback((e) => {
@@ -416,6 +452,19 @@ const GameBoard = () => {
         </div>
 
         <div className="word-input-section">
+          <div 
+            className="current-level-display" 
+            data-level={getAchievementLevel(score, maxScore).toLowerCase()}
+          >
+            <div className="level-badge">
+              <span className="level-emoji">{getAchievementEmoji(score, maxScore)}</span>
+              <span className="level-name">{getAchievementLevel(score, maxScore)}</span>
+            </div>
+            <div className="level-progress">
+              {getNextLevelProgress(score, maxScore)}
+            </div>
+          </div>
+          
           <div 
             className={`current-word ${validationState.isValid === false ? 'invalid' : ''} ${validationState.isValid === true ? 'valid' : ''}`}
             ref={wordInputRef}

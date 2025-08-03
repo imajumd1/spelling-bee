@@ -66,6 +66,100 @@
   max-width: 500px;
 }
 
+.current-level-display {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 2px solid #dee2e6;
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.5rem;
+  min-width: 280px;
+}
+
+.level-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.level-emoji {
+  font-size: 2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.level-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #343a40;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.level-progress {
+  font-size: 0.9rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+/* Level-specific styling */
+.current-level-display[data-level="genius"] {
+  background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+  border-color: #ff6b35;
+  animation: geniusGlow 2s ease-in-out infinite;
+}
+
+.current-level-display[data-level="genius"] .level-name {
+  color: #ff6b35;
+}
+
+.current-level-display[data-level="amazing"] {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border-color: #4ecdc4;
+}
+
+.current-level-display[data-level="amazing"] .level-name {
+  color: #4ecdc4;
+}
+
+.current-level-display[data-level="great"] {
+  background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+  border-color: #45b7d1;
+}
+
+.current-level-display[data-level="great"] .level-name {
+  color: #45b7d1;
+}
+
+.current-level-display[data-level="nice"] {
+  background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+  border-color: #96ceb4;
+}
+
+.current-level-display[data-level="nice"] .level-name {
+  color: #96ceb4;
+}
+
+.current-level-display[data-level="solid"] {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+  border-color: #feca57;
+}
+
+.current-level-display[data-level="solid"] .level-name {
+  color: #feca57;
+}
+
+.current-level-display[data-level="good"] {
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+  border-color: #ff9ff3;
+}
+
+.current-level-display[data-level="good"] .level-name {
+  color: #ff9ff3;
+}
+
 .current-word {
   font-size: 2rem;
   font-weight: bold;
@@ -351,6 +445,19 @@
     font-size: 0.9rem;
     padding: 0.7rem 1.2rem;
     min-width: 140px;
+  }
+  
+  .current-level-display {
+    min-width: 240px;
+    padding: 0.75rem 1rem;
+  }
+  
+  .level-emoji {
+    font-size: 1.5rem;
+  }
+  
+  .level-name {
+    font-size: 1.2rem;
   }
   
   .message {
